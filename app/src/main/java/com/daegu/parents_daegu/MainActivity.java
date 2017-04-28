@@ -3,19 +3,25 @@ package com.daegu.parents_daegu;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
+
 import android.app.Activity;
+import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.KeyEvent;
-import android.webkit.WebView;
+import android.view.View;
 import android.webkit.CookieManager;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
+
 import com.google.android.gms.appindexing.Action;
 import com.google.android.gms.appindexing.AppIndex;
 import com.google.android.gms.common.api.GoogleApiClient;
+
+import java.net.MalformedURLException;
+import java.net.URL;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -26,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
      */
     private GoogleApiClient client;
     public String app_name = "parents_daegu";
-    public String app_url = "http://parents.daegu.com/";
+    public String app_url = "http://parents.daegu.com";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,11 +40,12 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+
         wv = (WebView) findViewById(R.id.wv);
         // 웹뷰에서 자바스크립트실행가능
         wv.getSettings().setJavaScriptEnabled(true);
         wv.getSettings().setDomStorageEnabled(true);
-
+        wv.getSettings().setUserAgentString("2017parents");
         wv.loadUrl(app_url);
         wv.setWebViewClient(new WebViewClient() {
             @Override
